@@ -1,0 +1,17 @@
+# Core Libraries
+numpy
+pandas
+
+# Text & NLP
+nltk
+scikit-learn
+
+# Optional: For handling embeddings manually
+tqdm
+
+# For working with text files and CLI
+click
+
+# Optional: For visual testing and formatting (you can skip if not needed)
+rich
+
