@@ -1,0 +1,11 @@
+1. simulate_data.ipynb
+This file creates a synthetic dataset inspired by the SUPPORT2 clinical dataset. It simulates user or patient data including features like age, sex, blood pressure, white blood cell count, number of comorbidities, and a simulated income column. Based on these features, computes a risk score for each individual and then simulate how long they remain active (i.e., time to dropout) and whether the event was observed or censored. The result is a survival dataset saved as final_data.csv that mimics a short-term study where dropout can happen quickly.
+
+2. eda.ipynb
+ This file explores the simulated data using basic EDA techniques. We look at distributions of each variable, compute summary statistics, check correlations, and explore how different features relate to dropout. We also create visualizations such as correlation heatmaps and boxplots, and begin to understand the characteristics of high-risk vs. low-risk users before building any models.
+
+3. cox_prop.py
+Here we apply the Cox Proportional Hazards model, a traditional survival model that assumes a linear relationship between the features and the log-risk of dropout. This model gives hazard ratios which help understand how each variable affects dropout risk. The concordance index for this model came out to be around 0.77, indicating decent performance. We also grouped users into risk categories based on predicted risk and plotted Kaplan-Meier survival curves, which showed clear differences between risk groups. This model serves as a baseline to compare against more advanced methods.
+
+4. deepsurv.py
+This file implements DeepSurv, a deep learning–based survival model that learns non-linear relationships between input features and dropout risk. We used a neural network to output a log-risk score and trained it using a custom loss function based on partial likelihood. The final model achieved a higher concordance index of 0.88, showing improved performance over the Cox model. Kaplan-Meier curves based on DeepSurv predictions showed better separation between risk groups, and we also computed median survival times for each group. This model forms the core of our project and demonstrates how deep learning can improve survival prediction.
